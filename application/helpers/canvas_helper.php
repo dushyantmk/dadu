@@ -11,11 +11,13 @@
  * @author Ben Argo <ben@benargo.com>
  * @copyright Copyright 2013 Dushyant Kanungo
  */
-class Canvas
+ 
+// Constants
+define('CONFIG_PATH', APPPATH .'config/canvas.php');
+define('PRODUCTS_PATH', BASEPATH .'images/canvas/products');
+  
+class Canvas_helper
 {
-	const CONFIG_PATH = APPPATH .'config/canvas.php';
-	const PRODUCTS_PATH = BASEPATH .'images/canvas/products';
-
 	/**
 	 * check_config_file()
 	 *
@@ -84,8 +86,10 @@ class Canvas
 	{
 		if(is_writable(CONFIG_PATH))
 		{
+			$ci =& get_instance();
+			
 			$new_contents = "<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\n";
-			foreach($this->config->item('canvas') as $key => $item)
+			foreach($ci->config->item('canvas') as $key => $item)
 			{
 				$new_contents .= "\$config['canvas']['$key'] = ".(is_string($item) ? "'$item'" : $item).";\n";
 			}	
@@ -157,7 +161,7 @@ class Canvas
 		// Create the file
 		$new_contents = "<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\n
 
-						\$config['canvas']['dimensions_width'] = 1337;\n
+						\$config['canvas']['dimensions_width'] = 350;\n
 						\$config['canvas']['dimensions_height'] = 400;\n
 						\$config['canvas']['logo_url'] = '". site_url('images/canvas/brand_logo.png') ."';\n
 						\$config['canvas']['logo_x'] = 0;\n

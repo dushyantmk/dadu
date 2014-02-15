@@ -1,7 +1,7 @@
 <?php
-class canvas_m extends MY_Model
+class Canvas_m extends MY_Model
 {
-	protected $_table_name = 'canvass';
+	protected $_table_name = 'canvas';
 	protected $_order_by = 'cat_id';
 	public $rules = array(
 		'id' => array(
