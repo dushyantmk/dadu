@@ -4,7 +4,7 @@ class Canvas extends Admin_Controller
 	public function __construct ()
 	{
 		parent::__construct();
-		$this->config->load('canvas');
+		$this->load->helper('canvas_config');
 	}
 
 	public function index ()
@@ -18,7 +18,7 @@ class Canvas extends Admin_Controller
 		
 		print_r($this->config->item('canvas'));
 		
-		if(is_writable(APPPATH .'config/canvas.php'))
+		if(is_writable(APPPATH .'helper/canvas_config_helper.php'))
 		{
 			$new_contents = "<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\n";
 			foreach($this->config->item('canvas') as $key => $item)
@@ -26,10 +26,10 @@ class Canvas extends Admin_Controller
 				$new_contents .= "\$config['canvas']['$key'] = ".(is_string($item) ? "'$item'" : $item).";\n";
 			}	
 			
-			file_put_contents(APPPATH .'config/canvas.php', $new_contents);	
+			file_put_contents(APPPATH .'helper/canvas_config_helper.php', $new_contents);	
 		}
 		
-		print_r(file_get_contents(APPPATH .'config/canvas.php'));
+		print_r(file_get_contents(APPPATH .'helper/canvas_config_helper.php'));
 		
 		
 		//$this->config->set_item('canvas
