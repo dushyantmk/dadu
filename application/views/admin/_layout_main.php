@@ -3,10 +3,14 @@
 <nav class="navbar navbar-static-top navbar-inverse" role="navigation">
   <div class="navbar-inner">
     <ul class="nav navbar-nav">
-      <li><a class="navbar-brand" href="<?php echo site_url('admin/dashboard');?>"><?php echo $meta_title; ?></a></li>
+      <li><a class="navbar-brand" href="<?php echo site_url('admin/dashboard');?>"><img src="<?php echo site_url('images/dadu-logo-100.png');?>"></a></li>
       <li class="active"><a href="<?php echo site_url('admin/dashboard');?>">Dashboard</a></li>
-      <li><?php echo anchor('admin/page', 'pages')?></li>
-      <li><?php echo anchor('admin/user', 'users')?></li>
+      <li><?php echo anchor('admin/category', 'Categories')?></li>
+      <li><?php echo anchor('admin/product', 'Products')?></li>
+      <li><?php echo anchor('admin/page', 'Pages')?></li>
+      <li><?php echo anchor('admin/page/order', 'Order Pages')?></li>
+      <li><?php echo anchor('admin/user', 'Users')?></li>
+      <li><?php echo anchor('admin/canvas', 'Canvas')?></li>
     </ul>
   </div>
 </nav>

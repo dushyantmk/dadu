@@ -3,6 +3,10 @@
 <?php echo form_open(); ?>
 <table class="table">
 	<tr>
+		<td>Parent</td>
+		<td><?php echo form_dropdown('parent_id', $pages_no_parents, $this->input->post('parent_id') ? $this->input->post('parent_id') : $page->parent_id); ?></td>
+	</tr>
+	<tr>
 		<td>Title</td>
 		<td><?php echo form_input('title', set_value('title', $page->title)); ?></td>
 	</tr>
@@ -12,7 +16,7 @@
 	</tr>
 	<tr>
 		<td>Body</td>
-		<td><?php echo form_textarea('body', set_value('body', $page->body)); ?></td>
+		<td><?php echo form_textarea('body', set_value('body', $page->body), 'class="tinymce"'); ?></td>
 	</tr>
 	<tr>
 		<td></td>
