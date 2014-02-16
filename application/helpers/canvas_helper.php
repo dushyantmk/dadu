@@ -14,7 +14,7 @@
  
 // Constants
 define('CONFIG_PATH', APPPATH .'config/canvas.php');
-define('PRODUCTS_PATH', BASEPATH .'images/canvas/products');
+define('PRODUCTS_PATH', FCPATH .'images/canvas/products');
   
 class Canvas_helper
 {
@@ -113,24 +113,23 @@ class Canvas_helper
 	{
 		if(!is_dir(PRODUCTS_PATH))
 		{
+			echo PRODUCTS_PATH;
 			mkdir(PRODUCTS_PATH, 0777, true);
 		}
 
 		// array(0 => 'champagne_bottle_1.png')
-		if($files = scandir(PRODUCTS_PATH))
+		if($files = preg_grep('/^([^.])/', scandir(PRODUCTS_PATH)))
 		{
-			foreach($files as $key => $file)
-			{
-				$file_name = preg_replace('/\.(gif|png|jpe?g)$/', '', $file);
-
-				// $files[champagne_bottle_1] = SITE_URL/images/canvas/products/champagne_bottle_1.png
-				$files[$file_name] = site_url('images/canvas/products/'. $file);
-
-				unset($files[$key]);
+	
+				foreach($files as $key => $file)
+				{
+					// $files[champagne_bottle_1] = SITE_URL/images/canvas/products/champagne_bottle_1.png
+					$files[$file] = site_url('images/canvas/products/'. $file);
+	
+					unset($files[$key]);
+				}
 			}
-
 			return $files;
-		}
 
 		return false;
 	}

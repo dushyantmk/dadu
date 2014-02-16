@@ -52,3 +52,26 @@
 			background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
 		}
+		#brand_logo_upload, #templates_upload{
+			background-color:#fff; 
+			padding:5px 20px; 
+			display:none; 
+			width:650px; 
+			height:300px; 
+			-moz-box-shadow: 0 0 85px 15px #888;
+			-webkit-box-shadow: 0 0 18px 15px #888; 
+			box-shadow: 0 0 85px 15px #888; 
+			border:1px solid #09C; 
+			z-index:1; 
+			position:absolute; 
+			top:50%; 
+			left:50%; 
+			margin:-200px 0 0 -350px;
+		}
+		.template_preview{
+			height:50px;
+		}
+		.manage_products_list{
+			text-align:center;
+			padding:10px;
+		}
