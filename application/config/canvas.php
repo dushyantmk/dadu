@@ -14,5 +14,5 @@ $config['canvas']['text_colour'] = 'on';
 $config['canvas']['text_font'] = 'on';
 $config['canvas']['text_weight'] = 'on';
 $config['canvas']['text_size'] = 'on';
-$config['canvas']['logo_url'] = 'images/canvas/logos/logo-court-barn2.png';
+$config['canvas']['logo_url'] = 'images/canvas/logos/logo-court-barn.png';
 $config['canvas']['template_images'] = 'images/canvas/products/logo-court-barn.png';

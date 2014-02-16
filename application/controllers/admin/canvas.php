@@ -25,6 +25,20 @@ class Canvas extends Admin_Controller
 	
         public function do_upload()
 		{
+			/*******************************************************
+			/* Scan and delete any existing logos in the directoty
+			/* This bit of code is important because it will save
+			/* hosting space and keep only one instance (latest) 
+			/* of the logo in the directory 
+  			******************************************************/
+			
+			$dir = FCPATH.'images/canvas/logos';
+			foreach (scandir($dir) as $item) 
+			{
+				if ($item == '.' || $item == '..') continue;
+				unlink($dir.DIRECTORY_SEPARATOR.$item);
+			}
+			
 			$config['upload_path'] = './images/canvas/logos/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$config['max_size']	= '200';
@@ -146,8 +160,8 @@ class Canvas extends Admin_Controller
 	/* uploaded from the template_upload 
 	/* function
 	************************************/
-	public function delete(){
-		
+	public function delete()
+	{
 		unlink(FCPATH .'images/canvas/products/'. $this->uri->segment(4));
 		redirect('admin/canvas/index');		
 	}
