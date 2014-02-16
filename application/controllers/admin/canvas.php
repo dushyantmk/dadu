@@ -39,6 +39,8 @@ class Canvas extends Admin_Controller
 				unlink($dir.DIRECTORY_SEPARATOR.$item);
 			}
 			
+			/* Now to upload functionality */
+			
 			$config['upload_path'] = './images/canvas/logos/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$config['max_size']	= '200';

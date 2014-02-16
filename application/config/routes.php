@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+$route['canvas.js'] = 'javascript/canvas';
 
 
 /* End of file routes.php */
