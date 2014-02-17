@@ -14,7 +14,7 @@ $(function(){
 		var ctx1;
 		var ctx2;
 		var ctx3;
-		var ctx3;
+		var ctx4;
 
 		var x = <?php echo $this->config->item('dimensions_width', 'canvas'); ?>;
 		var y = <?php echo $this->config->item('dimensions_height', 'canvas'); ?>;
@@ -24,14 +24,29 @@ $(function(){
 		var HEIGHT = <?php echo $this->config->item('dimensions_height', 'canvas'); ?>;
 		var product = new Image();
 		var logo = new Image();
-		var custom_text;
 		
+        // Form Values
+        
+        var size_one = '30';
+        var custom_text = 'Your T-Shirt';
+        var color_one = '#000';
+        var fontWeight_one = 'normal';
+        var font_one = 'Trebuchet MS';
+        
+        var custom_text2 = 'Your Slogan';
+        var size_two = '12';
+        var color_two = '#666';
+        var fontWeight_two = 'normal';
+        var font_two = 'Arial';
 	
 		$("form#custom_design").submit(function(event) {
 			event.preventDefault();
+            
+            logo.src ="<?php echo $this->config->item('logo_url', 'canvas'); ?>";
+            draw1(logo);
 			
-			prod_color = $("input[name=rr]:checked").val();
-			
+			product.src =$("#product_variance").val();
+            
 			custom_text = $("#custom_text").val();
 			size_one = $("#size_one").val();
 			color_one = $("#color_one").val();
@@ -44,17 +59,17 @@ $(function(){
 			fontWeight_two = $("#fontWeight_two").val();
 			font_two = $("#font_two").val();
 			
-			draw2(prod_color);
+			draw2(product);
+            
+            console.log(fontWeight_one);
 
 			draw3(custom_text, size_one, color_one, fontWeight_one, font_one);
 			draw4(custom_text2, size_two, color_two, fontWeight_two, font_two);
-		})
+		});
 		
 		
 	function init() {
-		//product.src ="product_templates/tshirt.png";
 		
-		logo.src ="<?php echo $this->config->item('logo_url', 'canvas'); ?>";
 
 		layer1 = document.getElementById("logo_layer");
 		ctx1 = layer1.getContext("2d");
@@ -81,27 +96,17 @@ $(function(){
 		draw4();
 	}
 
-	function draw1() {
+	function draw1(logo) {
 		ctx1.clearRect(0, 0, WIDTH, HEIGHT);
 		ctx1.drawImage(logo, <?php echo $this->config->item('logo_x', 'canvas'); ?>, <?php echo $this->config->item('logo_y', 'canvas'); ?>);
 	}
 
-	function draw2(prod_color) {
-
-//http://stackoverflow.com/questions/15394124/passing-radio-button-values-to-javascript
-
-		if (typeof(prod_color) == 'undefined' || custom_text2 == null || prod_color == 'white'){product.src ="product_templates/tshirt.png";}
-		if (prod_color == 'black'){product.src ="product_templates/tshirt-dark.png";}
-		if (prod_color == 'green'){product.src ="product_templates/tshirt-green.png";}
-		if (prod_color == 'pink'){product.src ="product_templates/tshirt-pink.png";}
-		if (prod_color == 'blue'){product.src ="product_templates/tshirt-blue.png";}
-		
+	function draw2(product) {
 		ctx2.clearRect(0, 0, WIDTH, HEIGHT);
 		ctx2.drawImage(product, <?php echo $this->config->item('product_x', 'canvas'); ?>, <?php echo $this->config->item('product_y', 'canvas'); ?>);
 	}
 
 	function draw3(custom_text, size_one, color_one, fontWeight_one, font_one) {
-		if (typeof(custom_text) == 'undefined' || custom_text == null){ custom_text=""; size_one="30"; color_one="#000"; fontWeight_one="normal"; font_one="Trebuchet MS";}
 		ctx3.clearRect(0, 0, 550, 500);
 		ctx3.font=fontWeight_one + " " + size_one+"px " +font_one;
 		ctx3.textAlign = 'center'
@@ -110,7 +115,6 @@ $(function(){
 	}
 	
 	function draw4(custom_text2, size_two, color_two, fontWeight_two, font_two) {
-		if (typeof(custom_text2) == 'undefined' || custom_text2 == null){ custom_text2=""; size_two="12"; color_two="#666"; fontWeight_two="normal"; font_two="Arial";}
 		ctx4.textAlign = 'center'
 		ctx4.font=fontWeight_two + " " + size_two+"px " +font_two;
 		ctx4.fillStyle=(color_two);

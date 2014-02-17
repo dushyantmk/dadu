@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+body,td,th {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;}
+#canvas_front {
+	width: 550px;
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
+	height: 1px;
+}
+#form_front {
+	width: 250px;
+	float: right;
+	display: inline-block;
+	background-color: #333;
+	padding: 5px 10px;
+	left: 0px;
+	top: 0px;
+}
+#submit, #generatebtn, #buy{
+	color:#FFF;
+	background-color:#069;
+	padding:4px 10px;
+	border:#FFF solid 1px;
+	text-decoration:none;
+	border-radius:3px;
+	font-size:1em;
+	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label span {
+    display:inline-block;
+    width:20px;
+    height:20px;
+    margin:0px 5px 0 0;
+	border:1px solid #000;
+    vertical-align:middle;
+    
+    cursor:pointer;
+}
+input[type="radio"]:nth-child(1n) + label span {
+	background:url(product_templates/color-pallet.png) 0px top no-repeat;
+	}
+input[type="radio"]:nth-child(3n) + label span {
+	background:url(product_templates/color-pallet.png) -20px top no-repeat;
+	}
+input[type="radio"]:nth-child(5n) + label span {
+	background:url(product_templates/color-pallet.png) -40px top no-repeat;
+	}
+input[type="radio"]:nth-child(7n) + label span {
+	background:url(product_templates/color-pallet.png) -60px top no-repeat;
+	}
+input[type="radio"]:nth-child(9n) + label span {
+	background:url(product_templates/color-pallet.png) -80px top no-repeat;
+	}
+
+input[type="radio"]:checked + label span {
+	border: 1px #fff solid;
+}

@@ -121,6 +121,12 @@
             	<input type="file" name="userfile" size="20" />
             </td>
 		</tr>
+        <tr>
+			<td>Template Name<br />(To be displayed in dropdown list.)</td>
+			<td>
+            	<input type="text" name="userfile_name" size="20" />
+            </td>
+		</tr>
 		<tr>
         	<td></td>
             <td>
@@ -129,11 +135,7 @@
 		</tr>
         <tr>
 	        <td colspan="2">
-            Manage Existing Templates
-            </td>
-        <tr>
-	        <td colspan="2">
-            	<table>
+            	<table align="center">
 		            <tr>
                     	<?php $list = Canvas_helper::get_product_images(); ?>
                     	<?php if(!empty($list)): ?>

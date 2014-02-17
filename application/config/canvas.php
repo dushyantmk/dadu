@@ -2,8 +2,8 @@
 
 $config['canvas']['dimensions_width'] = '550';
 $config['canvas']['dimensions_height'] = '500';
-$config['canvas']['logo_x'] = '445';
-$config['canvas']['logo_y'] = '445';
+$config['canvas']['logo_x'] = '440';
+$config['canvas']['logo_y'] = '440';
 $config['canvas']['product_x'] = '50';
 $config['canvas']['product_y'] = '15';
 $config['canvas']['text_box_0_x'] = '275';
