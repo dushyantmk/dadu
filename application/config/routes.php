@@ -41,7 +41,8 @@
 $route['default_controller'] = "page";
 $route['404_override'] = '';
 $route['canvas.js'] = 'javascript/canvas';
+$route['admin/(:any)'] = 'admin/$1';
 $route[':any'] = 'page/index/$1';
-
+$route['canvasprimary'] = 'canvasprimary';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

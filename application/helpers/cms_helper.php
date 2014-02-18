@@ -9,6 +9,30 @@
 	}
 	
 	/**
+	/* Fetch limited bits of an article for summary
+	/* Dushyant Kanungo - 17 Feb 2014
+	*/
+	function get_prodlist($product, $numwords = 50)
+	{
+		$string = '';
+		$url = 'product/' . intval($product->id) . '/' . e($product->slug);
+		$string .= '<h2>' .anchor($url, e($product->prod_name)). '</h2>';
+		$string .= '<p>'. e(strip_tags($product->prod_desc), $numwords) .'</p>';
+		return $string;
+	}
+	
+	function limit_to_numwords($string, $numwords)
+	{
+		$excerpt = explode(' ', $string, $numwords +1);
+		if (count($excerpt >= $numwords))
+		{
+			array_pop($excerpt);
+		}
+		$excerpt = implode(' ', $excerpt);
+		return $excerpt;
+	}
+	
+	/**
 	/* This helper will generate the navigation
 	/* Dushyant Kanungo - 17 Feb 2014
 	*/

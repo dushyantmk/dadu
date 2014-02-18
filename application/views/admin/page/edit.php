@@ -8,7 +8,7 @@
 	</tr>
     <tr>
 		<td>Template</td>
-		<td><?php echo form_dropdown('template', array('page' => 'Page', 'produts' => 'Products', 'category' => 'Categories', 'homepage' => 'Home Page'), $this->input->post('template') ? $this->input->post('template') : $page->template); ?></td>
+		<td><?php echo form_dropdown('template', array('page' => 'Page', 'products' => 'Products', 'categories' => 'Categories', 'homepage' => 'Home Page'), $this->input->post('template') ? $this->input->post('template') : $page->template); ?></td>
 	</tr>
 	<tr>
 		<td>Title</td>
