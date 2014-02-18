@@ -6,6 +6,7 @@ class Page extends Admin_Controller
 	{
 		parent::__construct();
 		$this->load->model('page_m');
+		$this->load->helper('cms');
 	}
 
 	public function index ()
