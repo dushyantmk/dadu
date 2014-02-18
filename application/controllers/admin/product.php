@@ -41,7 +41,8 @@ class Product extends Admin_Controller
 				'prod_name', 
 				'slug', 
 				'prod_desc', 
-				'prod_price'
+				'prod_price',
+				'prod_img',
 			));
 			$this->product_m->save($data, $id);
 			redirect('admin/product');
@@ -76,4 +77,40 @@ class Product extends Admin_Controller
 		
 		return TRUE;
 	}
+		 public function do_upload()
+		{
+			/*******************************************************
+			/* Upload product images
+			/* of the logo in the directory 
+  			******************************************************/
+			
+			$dir = FCPATH.'images/products';
+			foreach (scandir($dir) as $item) 
+			
+			/* Now to upload functionality */
+			
+			$config['upload_path'] = './images/products/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size']	= '250';
+			$config['max_width']  = '500';
+			$config['max_height']  = '500';
+	
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload())
+			{
+				$data = array('error' => $this->upload->display_errors());
+				$this->load->view('admin/product/edit', $data);
+			}
+			else
+			{
+				$data = $this->upload->data();
+				
+				$config = $this->config->item('canvas');
+				$config['logo_url'] = 'images/products'. $data['file_name'];
+
+				redirect('admin/product/edit/');
+			}
+		}
+
 }

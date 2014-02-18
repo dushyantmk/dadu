@@ -62,6 +62,7 @@ class Page extends Admin_Controller
 			$data = $this->page_m->array_from_post(array(
 				'title', 
 				'slug', 
+				'template', 
 				'body', 
 				'parent_id'
 			));
@@ -98,4 +99,5 @@ class Page extends Admin_Controller
 		
 		return TRUE;
 	}
+	
 }

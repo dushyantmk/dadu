@@ -52,7 +52,7 @@
 			background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
 		}
-		#brand_logo_upload, #templates_upload{
+		#brand_logo_upload, #templates_upload, #prod_upload{
 			background-color:#fff; 
 			padding:5px 20px; 
 			display:none; 

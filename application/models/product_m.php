@@ -24,15 +24,19 @@ class Product_m extends MY_Model
 			'label' => 'Slug', 
 			'rules' => 'trim|required|max_length[100]|url_title|callback__unique_slug|xss_clean'
 		), 
-		'prod_prie' => array(
+		'prod_price' => array(
 			'field' => 'prod_price', 
 			'label' => 'Product Price', 
-			'rules' => 'trim|required|max_length[11]|xss_clean'
+			'rules' => 'trim|required|max_length[11]|xss_clean|numeric'
 		),
 		'prod_desc' => array(
 			'field' => 'prod_desc', 
 			'label' => 'Product Description', 
 			'rules' => 'trim|required'
+		),
+		'prod_img' => array(
+			'field' => 'prod_img', 
+			'label' => 'Product Image',
 		)
 	);
 
@@ -44,6 +48,7 @@ class Product_m extends MY_Model
 		$product->prod_desc = '';
 		$product->cat_id = 1;
 		$product->prod_price = '';
+		$product->prod_img = 'default.png';
 		return $product;
 	}
 
