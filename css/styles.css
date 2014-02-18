@@ -4,3 +4,18 @@
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
+
+h1 a{
+	display:inline-block;
+	background:url(../images/dadu-logo.png) no-repeat;
+	height:70px;
+	padding:5px 0 0 150px;
+	color:#333;
+	}
+h1 a:hover{
+	text-decoration:none;
+	color:#333;
+}
+h1, h2, h3{
+	font-family:Georgia, Times, serif;
+}
