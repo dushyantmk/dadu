@@ -25,7 +25,7 @@
 		<td>Slug</td>
 		<td><?php echo form_input('slug', set_value('slug', $product->slug)); ?></td>
 	</tr>
-    <!--
+    
         <tr>
     	<td>Product Image</td>
 		<td>
@@ -33,7 +33,7 @@
 			<input type="file" name="userfile" size="20" class="btn btn-primary">
 		</td>
 	</tr>
--->
+
 	<tr>
 		<td>Product Description</td>
 		<td><?php echo form_textarea('prod_desc', set_value('prod_desc', $product->prod_desc), 'class="tinymce"'); ?></td>

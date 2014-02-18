@@ -1,4 +1,16 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Dadu -> Controller -> Admin -> Product
+ *
+ * Handles the creation, editing and deletion of products from Dadu.
+ *
+ * @package Dadu
+ * @since 0.1
+ * @author Dushyant Kanungo <dushyantkanungo@yahoo.com>
+ * @author Ben Argo <ben@benargo.com>
+ * @copyright Copyright 2013 Dushyant Kanungo
+ */
 class Product extends Admin_Controller
 {
 
@@ -19,14 +31,25 @@ class Product extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
-	public function edit ($id = NULL)
+	/**
+	 * edit()
+	 *
+	 * Handles the creation and editing of products
+	 *
+	 * @access public
+	 * @param int $id - Optional, an ID number of an existing product
+	 * @return text/html
+	 */
+	public function edit($id = NULL)
 	{
 		// Fetch a product or set a new one
-		if ($id) {
+		if ($id) 
+		{
 			$this->data['product'] = $this->product_m->get($id);
 			count($this->data['product']) || $this->data['errors'][] = 'product could not be found';
 		}
-		else {
+		else 
+		{
 			$this->data['product'] = $this->product_m->get_new();
 		}
 		
@@ -35,15 +58,18 @@ class Product extends Admin_Controller
 		$this->form_validation->set_rules($rules);
 		
 		// Process the form
-		if ($this->form_validation->run() == TRUE) {
+		if ($this->form_validation->run() === TRUE) 
+		{
 			$data = $this->product_m->array_from_post(array(
 				'cat_id', 
 				'prod_name', 
 				'slug', 
 				'prod_desc', 
 				'prod_price',
-				'prod_img',
 			));
+
+			$data['prod_img'] = $this->do_upload();
+		
 			$this->product_m->save($data, $id);
 			redirect('admin/product');
 		}
@@ -58,6 +84,7 @@ class Product extends Admin_Controller
 		$this->product_m->delete($id);
 		redirect('admin/product');
 	}
+
 
 	public function _unique_slug ($str)
 	{
@@ -77,40 +104,41 @@ class Product extends Admin_Controller
 		
 		return TRUE;
 	}
-		 public function do_upload()
-		{
-			/*******************************************************
-			/* Upload product images
-			/* of the logo in the directory 
-  			******************************************************/
-			
-			$dir = FCPATH.'images/products';
-			foreach (scandir($dir) as $item) 
-			
-			/* Now to upload functionality */
-			
-			$config['upload_path'] = './images/products/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size']	= '250';
-			$config['max_width']  = '500';
-			$config['max_height']  = '500';
 	
-			$this->load->library('upload', $config);
+	/**
+	 * do_upload()
+	 *
+	 * Handles the upload of product images
+	 *
+	 * @access private
+	 * @return string - the name of the file we just uploaded.
+	 */
+	private function do_upload()
+	{
+		// Define some upload configuration
+		$config['upload_path'] = FCPATH .'images/products/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size']	= '250';
+		$config['max_width']  = '500';
+		$config['max_height']  = '500';
+	
+		// Load the file upload class
+		$this->load->library('upload', $config);
 
-			if ( ! $this->upload->do_upload())
-			{
-				$data = array('error' => $this->upload->display_errors());
-				$this->load->view('admin/product/edit', $data);
-			}
-			else
-			{
-				$data = $this->upload->data();
-				
-				$config = $this->config->item('canvas');
-				$config['logo_url'] = 'images/products'. $data['file_name'];
-
-				redirect('admin/product/edit/');
-			}
+		// Handle the upload
+		if ( ! $this->upload->do_upload())
+		{
+			$data = array('error' => $this->upload->display_errors());
+			$this->load->view('admin/product/edit', $data);
 		}
+		else
+		{
+			$data = $this->upload->data();
 
+			return $data['file_name'];
+		}
+	}
 }
+
+// End of product.php
+
