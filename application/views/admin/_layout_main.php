@@ -22,7 +22,7 @@
     <!---Sidebar---->
 	<div class="col-md-3">
     	<section>
-        	<?php echo mailto('dushyantkanungo@yahoo.com','<i class="glyphicon glyphicon-user"></i> dushyantkanungo@yahoo.com')?><br>
+        	<?php echo mailto($this->session->userdata('email'), '<i class="glyphicon glyphicon-user"></i> '. $this->session->userdata('email'));?><br>
             <?php echo anchor('admin/user/logout', '<i class="glyphicon glyphicon-off"></i> Logout')?>
         </section>
     </div>

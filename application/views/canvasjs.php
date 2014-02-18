@@ -61,8 +61,6 @@ $(function(){
 			
 			draw2(product);
             
-            console.log(fontWeight_one);
-
 			draw3(custom_text, size_one, color_one, fontWeight_one, font_one);
 			draw4(custom_text2, size_two, color_two, fontWeight_two, font_two);
 		});
@@ -152,11 +150,12 @@ $("#generatebtn").click(function(event) {
 	image = can_final.toDataURL("image/png");
 	localStorage.setItem($.md5(image)+".png",image);
 	document.getElementById("final_product").src = localStorage.getItem($.md5(image)+'.png');
+    console.log(image);
 	
 //********************************************** uploading the generating image from local storage to server
 	
 	$.ajax({
-		url: './user_images/upload.php',
+		url: 'http://isa.cems.uwe.ac.uk/~dk2-kanungo/dadu/images/canvas/user_images/upload.php',
 		type: "POST",
 		context: document.body,
 		data: {
@@ -176,7 +175,7 @@ $("#generatebtn").click(function(event) {
 	
 		window.globalpng = $.md5(image)+'.png';
 		window.open(
-		'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://www.cems.uwe.ac.uk/~dk2-kanungo/y3/dmp/beta/user_images/'+window.globalpng), 
+		'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('http://isa.cems.uwe.ac.uk/~dk2-kanungo/dadu/images/canvas/user_images/'+window.globalpng), 
 		'facebook-share-dialog', 
 		'width=626,height=436'); 
 	});
