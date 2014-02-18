@@ -1,7 +1,7 @@
 <?php
 class Category_m extends MY_Model
 {
-	protected $_table_name = 'categories ';
+	protected $_table_name = 'categories';
 	protected $_order_by = '';
 	public $rules = array(
 		'id' => array(

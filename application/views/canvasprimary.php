@@ -26,7 +26,7 @@
     <?php $list = Canvas_helper::get_product_images(); ?>
 	<?php if(!empty($list)): ?>
 	<?php foreach(Canvas_helper::get_product_images() as $file_name => $file): ?>
-	<option value="<?php echo $file; ?>"><?php  echo ucwords(preg_replace('(.*\/|png|jpg|jpeg|gif|\.|\_)', ' ',$file)); ?></option>
+	<option value="<?php echo $file; ?>"><?php  echo ucwords(preg_replace('(.*\/|png|jpg|jpeg|gif|\.|\_|\-)', ' ',$file)); ?></option>
 	<?php endforeach; ?>
 	<?php endif; ?>
   </select></p>

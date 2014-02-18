@@ -81,9 +81,8 @@ class Canvas extends Admin_Controller
 			$config['max_size']	= '300';
 			$config['max_width']  = '500';
 			$config['max_height']  = '400';
-	
+			
 			$this->load->library('upload', $config);
-
 			if ( ! $this->upload->do_upload())
 			{
 				$data = array('error' => $this->upload->display_errors());
@@ -93,6 +92,8 @@ class Canvas extends Admin_Controller
 			{
 				$data = $this->upload->data();
 				
+				rename($data['full_path'], FCPATH .'images/canvas/products/'. $this->input->post('userfile_name') . $data['file_ext']);
+
 				$config = $this->config->item('canvas');
 				$config['template_images'] = 'images/canvas/products/'. $data['file_name'];
 				

@@ -6,13 +6,14 @@ class Product extends Admin_Controller
 	{
 		parent::__construct();
 		$this->load->model('product_m');
+		$this->load->model('category_m');
 	}
 
 	public function index ()
 	{
 		// Fetch all products
 		$this->data['products'] = $this->product_m->get();
-		
+		$this->data['categories'] = $this->category_m->get();
 		// Load view
 		$this->data['subview'] = 'admin/product/index';
 		$this->load->view('admin/_layout_main', $this->data);

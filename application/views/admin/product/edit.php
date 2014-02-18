@@ -5,15 +5,13 @@
 	<tr>
 		<td>Category</td>
 		<td>
-		<?php
-		 // This bit should do this:
-		 
-		 //Fetch category names from dmp_categories table and display as a drop down and while saving in the DB, category id is saved as cat_id in dmp_products table
-		 
-		//this is not working
-		
-		//echo form_dropdown('cat_id', $category, $this->input->post('cat_id') ? $this->input->post('cat_id') : $product->cat_id); 		
-		?></td>
+		<?php $this->data['categories'] = $this->category_m->get();	?>
+		<select name="cat_id" id="cat_id">
+		<?php foreach($this->data['categories'] as $category): ?>
+		<option value="<?php echo $category->id; ?>"><?php  echo $category->cat_name; ?></option>
+		<?php endforeach; ?>
+		</select>
+	</td>
 	</tr>
 	<tr>
 		<td>Product Name</td>
