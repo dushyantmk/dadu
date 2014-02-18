@@ -130,6 +130,7 @@ class Product extends Admin_Controller
 		{
 			$data = array('error' => $this->upload->display_errors());
 			$this->load->view('admin/product/edit', $data);
+			return $this->data['product']->prod_img;
 		}
 		else
 		{
@@ -137,6 +138,8 @@ class Product extends Admin_Controller
 
 			return $data['file_name'];
 		}
+
+		return $this->data['product']->prod_img;
 	}
 }
 
