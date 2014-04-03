@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -48,12 +48,12 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql5';
-$db['default']['username'] = 'fet10036175';
-$db['default']['password'] = 'thursday';
-$db['default']['database'] = 'fet10036175';
+$db['default']['hostname'] = '<?php echo $db_host; ?>';
+$db['default']['username'] = '<?php echo $db_user; ?>';
+$db['default']['password'] = '<?php echo $db_password; ?>';
+$db['default']['database'] = '<?php echo $db_name; ?>';
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = 'dadu_';
+$db['default']['dbprefix'] = '<?php echo $db_prefix; ?>';
 $db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = FALSE;
 $db['default']['cache_on'] = FALSE;

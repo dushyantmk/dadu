@@ -1,0 +1,432 @@
+@charset "utf-8";
+/* CSS Document */
+/**** Written by Dushyant Kanungo for the Digital Media Project B.Sc. Web Design Year 3 at the University of the West of England, Bristol. *******/
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+aside, details, figcaption, figure, footer, header, nav, menu, section {
+	display: block;
+}
+body, td, th {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	color: #333;
+	margin: 0;
+}
+h1 {
+	font-size: 2.5em;
+}
+h2 {
+	font-size: 2em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4 {
+	font-size: 1em;
+}
+h5 {
+	font-size: 1em;
+}
+header, footer, .topgrey {
+	width: 100%;
+	color: #FFF;
+	padding: 5px 0;
+}
+.topgrey a, header a, footer a {
+	color: #FFF;
+}
+header {
+	background-color: #7cd6e6;
+}
+section{
+	margin-top: 20px;
+}
+footer {
+	margin-top: 20px;
+	background-color: #333;
+	position:fixed;
+	bottom:0;
+}
+.topgrey {
+	background-color: #333;
+}
+header h1, header h2, header h3, header p {
+	color: #FFF;
+}
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+body {
+	min-width: 960px;
+}
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+/* `Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.push-1, .pull-1, .push-2, .pull-2, .push-3, .pull-3, .push-4, .pull-4, .push-5, .pull-5, .push-6, .pull-6, .push-7, .pull-7, .push-8, .pull-8, .push-9, .pull-9, .push-10, .pull-10, .push-11, .pull-11 {
+	position: relative;
+}
+/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0;
+}
+.omega {
+	margin-right: 0;
+}
+/* `Grid >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper .grid-1 {
+	width: 60px;
+}
+.wrapper .grid-2 {
+	width: 140px;
+}
+.wrapper .grid-3 {
+	width: 220px;
+}
+.wrapper .grid-4 {
+	width: 300px;
+}
+.wrapper .grid-5 {
+	width: 380px;
+}
+.wrapper .grid-6 {
+	width: 460px;
+}
+.wrapper .grid-7 {
+	width: 540px;
+}
+.wrapper .grid-8 {
+	width: 620px;
+}
+.wrapper .grid-9 {
+	width: 700px;
+}
+.wrapper .grid-10 {
+	width: 780px;
+}
+.wrapper .grid-11 {
+	width: 860px;
+}
+.wrapper .grid-12 {
+	width: 940px;
+}
+/* `Prefix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper .prefix-1 {
+	padding-left: 80px;
+}
+.wrapper .prefix-2 {
+	padding-left: 160px;
+}
+.wrapper .prefix-3 {
+	padding-left: 240px;
+}
+.wrapper .prefix-4 {
+	padding-left: 320px;
+}
+.wrapper .prefix-5 {
+	padding-left: 400px;
+}
+.wrapper .prefix-6 {
+	padding-left: 480px;
+}
+.wrapper .prefix-7 {
+	padding-left: 560px;
+}
+.wrapper .prefix-8 {
+	padding-left: 640px;
+}
+.wrapper .prefix-9 {
+	padding-left: 720px;
+}
+.wrapper .prefix-10 {
+	padding-left: 800px;
+}
+.wrapper .prefix-11 {
+	padding-left: 880px;
+}
+/* `Suffix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper .suffix-1 {
+	padding-right: 80px;
+}
+.wrapper .suffix-2 {
+	padding-right: 160px;
+}
+.wrapper .suffix-3 {
+	padding-right: 240px;
+}
+.wrapper .suffix-4 {
+	padding-right: 320px;
+}
+.wrapper .suffix-5 {
+	padding-right: 400px;
+}
+.wrapper .suffix-6 {
+	padding-right: 480px;
+}
+.wrapper .suffix-7 {
+	padding-right: 560px;
+}
+.wrapper .suffix-8 {
+	padding-right: 640px;
+}
+.wrapper .suffix-9 {
+	padding-right: 720px;
+}
+.wrapper .suffix-10 {
+	padding-right: 800px;
+}
+.wrapper .suffix-11 {
+	padding-right: 880px;
+}
+/* `Push Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper .push-1 {
+	left: 80px;
+}
+.wrapper .push-2 {
+	left: 160px;
+}
+.wrapper .push-3 {
+	left: 240px;
+}
+.wrapper .push-4 {
+	left: 320px;
+}
+.wrapper .push-5 {
+	left: 400px;
+}
+.wrapper .push-6 {
+	left: 480px;
+}
+.wrapper .push-7 {
+	left: 560px;
+}
+.wrapper .push-8 {
+	left: 640px;
+}
+.wrapper .push-9 {
+	left: 720px;
+}
+.wrapper .push-10 {
+	left: 800px;
+}
+.wrapper .push-11 {
+	left: 880px;
+}
+/* `Pull Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.wrapper .pull-1 {
+	left: -80px;
+}
+.wrapper .pull-2 {
+	left: -160px;
+}
+.wrapper .pull-3 {
+	left: -240px;
+}
+.wrapper .pull-4 {
+	left: -320px;
+}
+.wrapper .pull-5 {
+	left: -400px;
+}
+.wrapper .pull-6 {
+	left: -480px;
+}
+.wrapper .pull-7 {
+	left: -560px;
+}
+.wrapper .pull-8 {
+	left: -640px;
+}
+.wrapper .pull-9 {
+	left: -720px;
+}
+.wrapper .pull-10 {
+	left: -800px;
+}
+.wrapper .pull-11 {
+	left: -880px;
+}
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 10px;
+}
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before, .clearfix:after, .wrapper:before, .wrapper:after {
+	content: '.';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	font-size: 0;
+	line-height: 0;
+	width: 0;
+	height: 0;
+}
+.clearfix:after, .wrapper:after {
+	clear: both;
+}
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix, .wrapper {
+	zoom: 1;
+}
+.show {
+	background: #B9E6F7;
+	text-align: center;
+}
+/****************************************************/
+header hgroup {
+	text-align: center;
+}
+.center {
+	text-align: center
+}
+.left {
+	text-align: left
+}
+.right {
+	text-align: right;
+}
+a.btn {
+	background: #7cd6e6;
+}
+a.btn:hover {
+	background: #6bb9c7;
+}
+a.red-btn {
+	background: #F31B2B;
+}
+a.red-btn:hover {
+	background: #c71623;
+}
+a.green-btn {
+	background: #6cc76e;
+}
+a.green-btn:hover {
+	background: #58a35a;
+}
+a.yellow-btn {
+	background: #eae84b;
+}
+a.yellow-btn:hover {
+	background: #d6d445;
+}
+a.grey-btn {
+	background: #ccc;
+}
+a.btn, a.red-btn, a.green-btn, a.yellow-btn, a.grey-btn {
+	padding: 5px 15px;
+	color: #FFF;
+	text-decoration: none;
+}
+fieldset, textarea, select, input{padding:5px; border:1px #66CCCC solid; border-radius:5px;}
+input:focus, textarea:focus, select:focus{border:#F00 1px solid; border-radius:5px}
+nav{background-color:#666; margin:0; padding:0;}
+nav ul{margin:5px 0; padding:0;}
+nav ul li{
+	display:inline;
+	padding:5px 10px 5px 10px;
+	margin:0;
+}
+nav ul li a {color:#FFF; text-decoration:none; font-size:1em;padding:5px 10px 5px 10px;}
+nav ul li a:hover{background-color:#00a1be;}
+
+table {
+  font-family: 'Arial';
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+     0px 10px 20px rgba(0,0,0,0.05),
+     0px 20px 20px rgba(0,0,0,0.05),
+     0px 30px 20px rgba(0,0,0,0.05);}
+  tr {
+     &:hover {
+      background: #f4f4f4;
+      
+      td {
+        color: #555;
+      }
+    }
+  }
+  th, td {
+    color: #333;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-collapse: collapse;
+  }
+  th {
+    background: #7cd6e6;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8em;
+	height:40px;
+    &.last {
+    border-right: none;
+    }
+  }
+}
+
+tr:nth-child(even) {
+	background: #CCC
+}
+tr:nth-child(odd) {
+	background: #FFF
+}
+tr:hover {
+	background: #f4f4f4
+}
+.dash_thumb {
+	width:100px;
+}

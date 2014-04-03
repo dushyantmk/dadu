@@ -42,7 +42,10 @@ $route['default_controller'] = "page";
 $route['404_override'] = '';
 $route['canvas.js'] = 'javascript/canvas';
 $route['admin/(:any)'] = 'admin/$1';
+$route['install'] = 'install';
+$route['install/(:any)'] = 'install/$1';
 $route[':any'] = 'page/index/$1';
 $route['canvasprimary'] = 'canvasprimary';
+$route['images/canvas/user_images/upload.php'] = 'images/canvas/user_images/upload.php';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
