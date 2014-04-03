@@ -2,6 +2,8 @@
 /*Written by Dushyant Kanungo on 03 Feb 2014*/
 	class Install extends CI_Controller {
 		
+		public $data = array();
+		
 		/**
 		 * __construct()
 		 *
@@ -15,6 +17,12 @@
 			parent::__construct();
 			
 			// Check to see if the installer has already been run
+			$this->load->database();
+			if($this->db->version())
+			{
+				$this->load->helper('url');
+				redirect('/');
+			}
 		}
 		
 		/**
@@ -62,20 +70,22 @@
 					$test->close();
 					
 					// Write the database settings to the config file
+					// First, create the file
+					touch(APPPATH .'config/'. ENVIRONMENT .'/install.log');
 										
 					// If the file isn't writable
-					if(!is_writable(APPPATH .'config/development/database.php'))
+					if(!is_writable(APPPATH .'config/'. ENVIRONMENT .'/database.php'))
 					{
 						// Try and make the file writable
 						try
 						{
-							if(!@chmod(APPPATH .'config/development/database.php', 777)) throw new Exception('Unable to make the configuration file writable');	
+							if(!@chmod(APPPATH .'config/'. ENVIRONMENT .'/database.php', 777)) throw new Exception('Unable to make the configuration file writable');	
 						}
 						catch(Exception $e)
 						{
 							// Nope, we can't make it writable
 							// Set the error message
-							$this->data['error_message'] = '<p>It seems that the <code>application/config/production/database.php</code> is not writable. Please change the permissions for this file to be writable for the duration of this install.</p>';
+							$this->data['error_message'] = '<p>It seems that the <code>application/config/'. ENVIRONMENT .'/database.php</code> is not writable. Please change the permissions for this file to be writable for the duration of this install.</p>';
 							
 							// load the page and exit
 							return $this->load->view('install/database', $this->data);
@@ -90,10 +100,10 @@
 					$config['db_name'] = $this->input->post('db_name');
 					$config['db_prefix'] = $this->input->post('db_prefix');
 					
-					$file_contents = '<?php '. $this->load->view('install/database_template', $config, true);
+					$file_contents = '<?php '. $this->load->view('install/templates/database', $config, true);
 					
 					// Write the file
-					file_put_contents(APPPATH .'config/development/database.php', $file_contents);
+					file_put_contents(APPPATH .'config/'. ENVIRONMENT .'/database.php', $file_contents);
 					
 					// And... redirect!
 					$this->load->helper('url');
@@ -157,13 +167,69 @@
 					$this->_log('Migration failed to run!');	
 				}
 			}
+			
+			// Set the base URL
+			// Touch the config file
+			touch(APPPATH .'config/'. ENVIRONMENT .'/config.php');
+			$this->_log('Created CMS config file in <code>application/config/'. ENVIRONMENT .'/config.php</code>');
+			
+			// If the file isn't writable
+			if(!is_writable(APPPATH .'config/'. ENVIRONMENT .'/config.php'))
+			{
+				// Try and make the file writable
+				try
+				{
+					if(!@chmod(APPPATH .'config/'. ENVIRONMENT .'/config.php', 777)) throw new Exception('Unable to make the configuration file writable');	
+				}
+				catch(Exception $e)
+				{
+					// Nope, we can't make it writable
+					$this->_log('It seems that the <code>application/config/'. ENVIRONMENT .'/config.php</code> is not writable. Please change the permissions for this file to be writable for the duration of this install.');						
+				}
+			}
+			
+			$config['base_url'] = str_replace('install/status', '', 'http://'. $_SERVER['SERVER_NAME'] . $_SERVER['REDIRECT_URL']);
+			
+			$file_contents = '<?php '. $this->load->view('install/templates/config', $config, true);
+					
+			// Write the file
+			file_put_contents(APPPATH .'config/'. ENVIRONMENT .'/config.php', $file_contents);
+						
+			// Log the result
+			$this->_log('Base URL set to <code>'. $config['base_url'] .'</code>');
+			
+			$this->_log('Configuration complete');
     	}
 		
 		
 		
 		public function userdetails()
 		{
-			$this->load->view('install/userdetails');	
+			// validation libraty loaded
+			$this->load->library('form_validation');
+			
+			// validation rules for the form
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback__unique_email|xss_clean');
+			$this->form_validation->set_rules('name', 'Username', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('password', 'Password', 'trim|matches[password_confirm]');
+			$this->form_validation->set_rules('password_confirm', 'Confirm Password', 'trim|matches[password]');
+
+			
+			// Process the form
+			if ($this->form_validation->run() == TRUE) {
+				$this->load->model('user_m');
+				$data = $this->user_m->array_from_post(array('name', 'email', 'password'));
+				$data['password'] = $this->user_m->hash($data['password']);
+				$this->user_m->save($data);
+				
+				// Redirect
+				$this->load->helper('url');
+				redirect('/install/success');
+			}
+			
+			// loading the view for user details page
+			$this->load->view('install/userdetails');
+			
     	}
 		public function success()
 		{
@@ -215,4 +281,22 @@
 				fwrite($this->install_log, '<p>'. $message .'</p>');
 			}
 		 }
+		 
+		public function _unique_email ($str)
+		{
+			// Do NOT validate if email already exists
+			// UNLESS it's the email for the current user
+			$this->load->model('user_m');
+			$id = $this->uri->segment(4);
+			$this->db->where('email', $this->input->post('email'));
+			!$id || $this->db->where('id !=', $id);
+			$user = $this->user_m->get();
+			
+			if (count($user)) {
+				$this->form_validation->set_message('_unique_email', '%s should be unique');
+				return FALSE;
+			}
+			
+			return TRUE;
+		}
 	}

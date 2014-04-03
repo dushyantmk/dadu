@@ -26,35 +26,37 @@
     <div class="grid-12">
       <h1>A new shop front for your online business!</h1>
       <p>Step 3 of 3</p>
-      <h3>Little  bit of information about you and your business</h3>
-    <form>
-    <div class="clear"></div>    
-    <table>
-    <tr>
-    <td>Website Name</td>
-    <td><input name="business_name" type="text" placeholder="Dadu Shop" required></td>
-    </tr>
-    <tr>
-      <td>Full Name</td>
-      <td><input name="admin_user" type="text" placeholder="admin_username" required></td>
-      </tr>
-    <tr>
-      <td>Password</td>
-      <td><input name="admin_password1" type="password" placeholder="Passw0rd" required></td>
-      </tr>
-    <tr>
-      <td>Password</td>
-      <td><input name="admin_password2" type="password" placeholder="Passw0rd" required></td>
-      </tr>
-    <tr>
-      <td>Admin Email ID</td>
-      <td><input name="admin_email" type="email" placeholder="Email" required></td>
-    </tr>
+      <h3>Little  bit of information about you</h3>
+     <form action="./userdetails" method="post">
+    <div class="clear"></div>  
     
+    <?php echo validation_errors(); ?>
+	<?php echo form_open(); ?>
+	<table class="table">
+	<tr>
+		<td>Name</td>
+		<td><?php echo form_input('name'); ?></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><?php echo form_input('email'); ?></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><?php echo form_password('password'); ?></td>
+	</tr>
+	<tr>
+		<td>Confirm password</td>
+		<td><?php echo form_password('password_confirm'); ?></td>
+	</tr>
+	
     </table>
         <div class="clear"></div>  
-    <p class="center"><a href="success" class="btn">Complete Install</a></p>
-    </form>
+    <p class="center"><input type="submit" value="Complete Install" class="btn"></p>
+  
+	<?php echo form_close();?>
+
+  
     </div>
     <div class="clear"></div>  
     </section>
